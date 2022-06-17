@@ -7,13 +7,13 @@ Create a function def pascal_triangle(n): that returns a list of lists of intege
 
 * You can assume n will be always an integer
 
-   #!/usr/bin/python3
+      #!/usr/bin/python3
 
-     """
+       """
      
-      0-main
+        0-main
      
-      """
+        """
 
       pascal_triangle = __import__('0-pascal_triangle').pascal_triangle
 
