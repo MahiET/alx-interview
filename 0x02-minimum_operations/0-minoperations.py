@@ -1,27 +1,35 @@
 #!/usr/bin/python3
-'''
-Given a number n, write a method that calculates
-the fewest number of operations needed to result in
-exactly n H characters in the file.
+'''The minimum operations coding challenge.
 '''
 
 
 def minOperations(n):
+    '''Computes the fewest number of operations needed to result
+    in exactly n H characters.
     '''
-    returns min operations to get n Hs
-    '''
-    operations = 0
-    if n <= 1:
+    if not isinstance(n, int):
         return 0
-    for i in range(2, n + 1):
-        '''
-        check if n could be broken into smaller parts
-        '''
-        while n % i == 0:
-            ''' reduce n into a smaller part '''
-            n = n / i
-            '''
-            if so add the nbr of smaller parts (in fact 1 copy and 4 paste)
-            '''
-            operations += i
-    return operations
+    ops_count = 0
+    clipboard = 0
+    done = 1
+    # print('H', end='')
+    while done < n:
+        if clipboard == 0:
+            # init (the first copy all and paste)
+            clipboard = done
+            done += clipboard
+            ops_count += 2
+            # print('-(11)->{}'.format('H' * done), end='')
+        elif n - done > 0 and (n - done) % done == 0:
+            # copy all and paste
+            clipboard = done
+            done += clipboard
+            ops_count += 2
+            # print('-(11)->{}'.format('H' * done), end='')
+        elif clipboard > 0:
+            # paste
+            done += clipboard
+            ops_count += 1
+            # print('-(01)->{}'.format('H' * done), end='')
+    # print('')
+    return ops_count
