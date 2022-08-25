@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Playing a game module.
+""" module Prime game .
 """
 
 
